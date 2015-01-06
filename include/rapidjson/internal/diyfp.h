@@ -76,7 +76,7 @@ struct DiyFp {
         return DiyFp(h, e + rhs.e + 64);
 #elif (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6)) && defined(__x86_64__)
 #  pragma GCC diagnostic push
-#  pragma GCC diagnostic ignored "-Wpedantic"
+#  pragma GCC diagnostic ignored "-Wpedantic"  // g++ 4.8 complains about its own extension under pedantic levels of warning.
         unsigned __int128 p = static_cast<unsigned __int128>(f) * static_cast<unsigned __int128>(rhs.f);
 #  pragma GCC diagnostic pop
         uint64_t h = p >> 64;
